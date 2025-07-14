@@ -44,7 +44,7 @@ function AddBlog() {
       createdAt,
     };
 
-    fetch("http://localhost:2025/blogs", {
+    fetch("https://843fa6cd9b383ee2.mokky.dev/blogs", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newPost),

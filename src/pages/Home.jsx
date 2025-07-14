@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Home() {
   const [data, setData] = useState("");
   useEffect(() => {
-    fetch("http://localhost:2025/blogs")
+    fetch("https://843fa6cd9b383ee2.mokky.dev/blogs")
       .then((res) => res.json())
       .then((json) => setData(json));
   }, []);

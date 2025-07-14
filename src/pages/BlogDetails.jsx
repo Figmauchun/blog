@@ -6,7 +6,7 @@ function BlogDetails() {
   const { id } = useParams();
   const [data, setData] = useState("");
   useEffect(() => {
-    fetch(`http://localhost:2025/blogs/${id}`)
+    fetch(`https://843fa6cd9b383ee2.mokky.dev/blogs/${id}`)
       .then((res) => res.json())
       .then((json) => setData(json));
   }, []);
