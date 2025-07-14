@@ -12,14 +12,14 @@ function BlogDetails() {
   }, []);
   return (
     <>
-      <div className="details px-[15px]">
-        <Link to={"/"}>
+      <div className="details px-[10px] lg:px-[15px]">
+        <Link to={"/"} className="my-[20px] block">
           <span className="bg-blue-700 hover:bg-blue-600 cursor-pointer text-[#fff] p-[10px] rounded-[10px] flex items-center gap-[5px] w-fit ">
             <i class="bx bx-home-alt"></i>Ortga
           </span>
         </Link>
         {data && (
-          <div className="details-box">
+          <div className="details-box p-[15px] lg:p-[30px] ">
             <div className="category-box mb-[20px]">
               <span className=" bg-[#e1e1e1] text-[12px] rounded-[10px] px-[24px] py-[12px]">
                 Kategory:{data.category}
@@ -28,8 +28,8 @@ function BlogDetails() {
             <div className="img-box">
               <img className=" rounded-[20px]" src={data.image} alt="" />
             </div>
-            <h4 className="text-[30px] my-[10px] lg:my-[25px]">{data.title}</h4>
-            <div className="content-box">
+            <h4 className="text-[25px] my-[10px] lg:my-[30px]">{data.title}</h4>
+            <div className="content-box text-[14px] lg:text-[16px]">
               <ReactMarkdown>{data.description}</ReactMarkdown>
             </div>
           </div>

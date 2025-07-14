@@ -95,7 +95,7 @@ function AddBlog() {
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="focus:ring-blue-500 focus:border-blue-500 min-h-[120px]"
+              className="focus:ring-blue-500 px-[15px] focus:border-blue-500 min-h-[120px]"
               placeholder="Markdown: **qalin**, *kursiv*, `kod`, > iqtibos..."
             ></textarea>
           </div>

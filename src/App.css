@@ -65,18 +65,15 @@ a.active {
   max-width: 900px;
   margin: auto;
   border: 1px solid #e1e1e1;
-  padding: 30px;
   border-radius: 20px;
 }
 .details .img-box {
   width: 100%;
   max-height: 400px;
-  min-height: 250px;
   overflow: auto;
   border-radius: 20px;
 }
 .details .img-box img {
-  height: 100%;
   width: 100%;
   object-fit: cover;
 }
