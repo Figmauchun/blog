@@ -1,0 +1,102 @@
+@import url(https://fonts.googleapis.com/css?family=Space+Grotesk:300,regular,500,600,700);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+@font-face {
+  font-family: "IgraSans";
+  src: url("./fonts/IgraSans.otf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "IgraSans";
+}
+
+/* add page */
+.addpage {
+  max-width: 1280px;
+  margin: 30px auto;
+}
+.addpage h2 {
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+.addpage input,
+textarea {
+  padding: 10px 24px;
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+}
+.addpage .input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.addpage button {
+}
+/* add page */
+
+/* home */
+.home,
+.details {
+  max-width: 1280px;
+  margin: 30px auto;
+}
+nav a {
+  padding: 10px;
+  color: #fff;
+  border-radius: 10px;
+}
+a.active {
+  background: #2563eb;
+  color: #fff;
+}
+/* details-box */
+.details-box {
+  max-width: 900px;
+  margin: auto;
+  border: 1px solid #e1e1e1;
+  padding: 30px;
+  border-radius: 20px;
+}
+.details .img-box {
+  width: 100%;
+  max-height: 400px;
+  min-height: 250px;
+  overflow: auto;
+  border-radius: 20px;
+}
+.details .img-box img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+/* scroll */
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: transparent;
+}
