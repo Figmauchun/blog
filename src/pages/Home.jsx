@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { ClimbingBoxLoader } from "react-spinners";
 
 function Home() {
   const [data, setData] = useState("");
+  const [load, setLoad] = useState(true);
   useEffect(() => {
-    fetch("https://843fa6cd9b383ee2.mokky.dev/blogs")
-      .then((res) => res.json())
-      .then((json) => setData(json));
+    setTimeout(() => {
+      fetch("https://843fa6cd9b383ee2.mokky.dev/blogs")
+        .then((res) => res.json())
+        .then((json) => setData(json), setLoad(false));
+    }, 2000);
   }, []);
   return (
     <>
@@ -15,6 +19,7 @@ function Home() {
           IT (Axborot texnologiyalari)ga oid maqolalar
         </h2>
         <div className="blog-cards-box grid sm:grid-cols-2 lg:grid-cols-3 gap-[20px]">
+          {load && <ClimbingBoxLoader />}
           {data &&
             data.map((e) => {
               return (

@@ -10,6 +10,14 @@ function BlogDetails() {
       .then((res) => res.json())
       .then((json) => setData(json));
   }, []);
+  const DeleteItem = () => {
+    fetch(`https://843fa6cd9b383ee2.mokky.dev/blogs/${id}`, {
+      method: "DELETE",
+    }).then(() => {
+      alert("Blog o'chirildi");
+      window.location.assign("/");
+    });
+  };
   return (
     <>
       <div className="details px-[10px] lg:px-[15px]">
@@ -20,10 +28,16 @@ function BlogDetails() {
         </Link>
         {data && (
           <div className="details-box p-[15px] lg:p-[30px] ">
-            <div className="category-box mb-[20px]">
+            <div className="category-box mb-[20px] flex justify-between items-center">
               <span className=" bg-[#e1e1e1] text-[12px] rounded-[10px] px-[24px] py-[12px]">
                 Kategory:{data.category}
               </span>
+              <div
+                onClick={DeleteItem}
+                className="trash-box bg-[#d75252] hover:bg-[#d75252b8] cursor-pointer text-[#fff] text-[16px] rounded-[10px] px-[18px] py-[12px]"
+              >
+                <i class="bx bxs-trash"></i>
+              </div>
             </div>
             <div className="img-box">
               <img className=" rounded-[20px]" src={data.image} alt="" />
