@@ -67,7 +67,7 @@ function Header() {
   };
 
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900">
+    <nav className="bg-white sticky top-0 z-[9999] border-gray-200 dark:bg-gray-900">
       <div className="max-w-[1280px] flex flex-wrap items-center justify-between mx-auto py-4 px-4">
         <Link to="/" className="flex items-center space-x-3">
           <img src="/images/logo.png" className="h-8" alt="Logo" />
