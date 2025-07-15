@@ -12,13 +12,9 @@ function Header() {
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-[1280px] flex flex-wrap items-center justify-between mx-auto py-4 px-4">
         <Link to={"/"} className="flex items-center space-x-3">
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="h-8"
-            alt="Logo"
-          />
+          <img src="/images/logo.png" className="h-8" alt="Logo" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            Blog
+            IT Maqolalar
           </span>
         </Link>
 
