@@ -6,82 +6,70 @@ function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
-  const toggleMenu = () => {
-    setIsOpen((prev) => !prev);
-  };
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   const questions = [
-    {
-      question: "const — bu nima?",
-      answer: "o'zgarmas",
-    },
-    {
-      question: "useState — nima vazifani bajaradi?",
-      answer: "state",
-    },
-    {
-      question: "img — bu nima?",
-      answer: "rasm",
-    },
-    {
-      question: "color — nima beradi?",
-      answer: "rang",
-    },
-    {
-      question: "[] — bu nima?",
-      answer: "massiv",
-    },
-    {
-      question: "Komponent — qanday harf bilan boshlanadi?",
-      answer: "katta",
-    },
-    {
-      question: "<!DOCTYPE> — bu nima?",
-      answer: "boshlanish",
-    },
+    { question: "const — bu nima?", answer: "o'zgarmas" },
+    { question: "useState — nima vazifani bajaradi?", answer: "state" },
+    { question: "img — bu nima?", answer: "rasm" },
+    { question: "color — nima beradi?", answer: "rang" },
+    { question: "[] — bu nima?", answer: "massiv" },
+    { question: "Komponent — qanday harf bilan boshlanadi?", answer: "katta" },
+    { question: "<!DOCTYPE> — bu nima?", answer: "boshlanish" },
     {
       question: "react-router-dom — nima uchun ishlatiladi?",
       answer: "routing",
     },
-    {
-      question: "margin — cssda nima beradi?",
-      answer: "oraliq",
-    },
-    {
-      question: "function — bu nima?",
-      answer: "funksiya",
-    },
+    { question: "margin — cssda nima beradi?", answer: "oraliq" },
+    { question: "function — bu nima?", answer: "funksiya" },
   ];
 
   const handleQuizBeforeAdd = async () => {
     const randomQuestion =
       questions[Math.floor(Math.random() * questions.length)];
-    const { value: userAnswer } = await Swal.fire({
-      title: "Savol:",
-      input: "text",
-      inputLabel: randomQuestion.question,
-      inputPlaceholder: "Javobni kiriting...",
-      showCancelButton: true,
-      confirmButtonText: "Yuborish",
-      cancelButtonText: "Bekor qilish",
-    });
 
-    if (!userAnswer) return;
+    try {
+      const { value: userAnswer } = await Swal.fire({
+        title: "Savol:",
+        input: "text",
+        inputLabel: randomQuestion.question,
+        inputPlaceholder: "Javobni kiriting...",
+        showCancelButton: true,
+        confirmButtonText: "Yuborish",
+        cancelButtonText: "Bekor qilish",
+        allowOutsideClick: true,
+        allowEscapeKey: true,
+      });
 
-    if (
-      userAnswer.trim().toLowerCase() === randomQuestion.answer.toLowerCase()
-    ) {
-      Swal.fire("To‘g‘ri!", "Endi maqola qo‘shishingiz mumkin!", "success");
-      navigate("/add");
-    } else {
-      Swal.fire("Xato!", "Javob noto‘g‘ri. Qaytadan urinib ko‘ring.", "error");
+      if (!userAnswer) return;
+
+      if (
+        userAnswer.trim().toLowerCase() === randomQuestion.answer.toLowerCase()
+      ) {
+        await Swal.fire(
+          "To‘g‘ri!",
+          "Endi maqola qo‘shishingiz mumkin!",
+          "success"
+        );
+        document.body.style.overflow = "auto"; // scrollni tiklash
+        navigate("/add");
+      } else {
+        await Swal.fire(
+          "Xato!",
+          "Javob noto‘g‘ri. Qaytadan urinib ko‘ring.",
+          "error"
+        );
+        document.body.style.overflow = "auto";
+      }
+    } catch (err) {
+      document.body.style.overflow = "auto";
     }
   };
 
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-[1280px] flex flex-wrap items-center justify-between mx-auto py-4 px-4">
-        <Link to={"/"} className="flex items-center space-x-3">
+        <Link to="/" className="flex items-center space-x-3">
           <img src="/images/logo.png" className="h-8" alt="Logo" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             IT Maqolalar
@@ -116,7 +104,7 @@ function Header() {
         >
           <ul className="flex flex-col md:flex-row items-center gap-[20px] mt-4 md:mt-0">
             <li>
-              <NavLink to="/" className="text-gray-700 dark:text-white ">
+              <NavLink to="/" className="text-gray-700 dark:text-white">
                 Bosh Sahifa
               </NavLink>
             </li>
