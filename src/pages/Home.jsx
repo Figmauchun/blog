@@ -101,6 +101,9 @@ function Home() {
                 alt={e.title}
               />
               <div className="p-[20px]">
+                <p className="text-gray-500 mb-2">
+                  O`qishlar soni 👁 {data.views ?? 0}
+                </p>
                 <h5 className="text-[20px] font-bold tracking-tight text-gray-900">
                   {e.title}
                 </h5>

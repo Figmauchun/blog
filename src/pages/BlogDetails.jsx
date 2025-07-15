@@ -12,11 +12,20 @@ function BlogDetails() {
   const [load, setLoad] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      fetch(`https://843fa6cd9b383ee2.mokky.dev/blogs/${id}`)
-        .then((res) => res.json())
-        .then((json) => setData(json), setLoad(false));
-    }, 1500);
+    // Yozuvlar sonini oshirish va ma'lumotni olish
+    fetch(`https://843fa6cd9b383ee2.mokky.dev/blogs/${id}`)
+      .then((res) => res.json())
+      .then((json) => {
+        setData(json);
+        setLoad(false);
+
+        // 🔼 Ko‘rishlar sonini oshirish
+        fetch(`https://843fa6cd9b383ee2.mokky.dev/blogs/${id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ views: (json.views || 0) + 1 }),
+        });
+      });
   }, [id]);
 
   const DeleteItem = async () => {
@@ -58,17 +67,16 @@ function BlogDetails() {
       cancelButtonText: "Bekor qilish",
     });
 
-    // Parol kiritilmasa, scroll holati tiklanadi
     if (!password) {
       document.body.style.overflow = "auto";
       return;
     }
 
     if (password === "hero1997@#$") {
-      document.body.style.overflow = "auto"; // scrollni tiklash
+      document.body.style.overflow = "auto";
       navigate(`/edit/${id}`);
     } else {
-      document.body.style.overflow = "auto"; // noto'g'ri parolda ham tiklash
+      document.body.style.overflow = "auto";
       Swal.fire("Xato!", "Parol noto‘g‘ri!", "error");
     }
   };
@@ -80,7 +88,9 @@ function BlogDetails() {
           <i className="bx bx-home-alt"></i>Ortga
         </span>
       </Link>
+
       {load && <ClimbingBoxLoader />}
+
       {data && (
         <div className="details-box p-[15px] lg:p-[30px] ">
           <div className="category-box mb-[20px] flex justify-between items-center">
@@ -110,7 +120,12 @@ function BlogDetails() {
 
           <h4 className="text-[25px] my-[10px] lg:my-[30px]">{data.title}</h4>
 
-          <div className="content-box  text-[14px] lg:text-[16px]">
+          {/* 👁 Ko‘rishlar soni */}
+          <p className="text-gray-500 mb-4">
+            👁 {data.views ?? 0} marta ko‘rilgan
+          </p>
+
+          <div className="content-box text-[14px] lg:text-[16px]">
             <div data-color-mode="light">
               <MDEditor.Markdown source={data.description} />
             </div>

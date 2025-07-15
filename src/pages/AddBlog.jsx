@@ -7,6 +7,7 @@ function AddBlog() {
   const [category, setCategory] = useState("");
   const [imageBase64, setImageBase64] = useState("");
   const [description, setDescription] = useState("");
+  const [views, setViews] = useState(0);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -43,6 +44,7 @@ function AddBlog() {
       description,
       image: imageBase64,
       createdAt,
+      views,
     };
 
     fetch("https://843fa6cd9b383ee2.mokky.dev/blogs", {
