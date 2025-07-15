@@ -9,6 +9,7 @@ function Home() {
   const [activeCategory, setActiveCategory] = useState("Hammasi");
   const [search, setSearch] = useState("");
   const [load, setLoad] = useState(true);
+  const [visibleCount, setVisibleCount] = useState(6); // 👈 Nechta maqola ko‘rinadi
 
   useEffect(() => {
     fetch("https://843fa6cd9b383ee2.mokky.dev/blogs")
@@ -26,6 +27,7 @@ function Home() {
 
   useEffect(() => {
     filterData();
+    setVisibleCount(6); // 👈 Filtrlanganida boshidan boshlab ko‘rsatish
   }, [search, activeCategory]);
 
   const filterData = () => {
@@ -42,6 +44,10 @@ function Home() {
     }
 
     setFiltered(result);
+  };
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 3);
   };
 
   return (
@@ -84,7 +90,7 @@ function Home() {
             Hech qanday maqola topilmadi.
           </p>
         ) : (
-          filtered.map((e) => (
+          filtered.slice(0, visibleCount).map((e) => (
             <div
               key={e.id}
               className="bg-white cursor-pointer hover:translate-y-2 transition-all duration-150 ease-in-out border border-gray-200 rounded-lg shadow-sm"
@@ -127,6 +133,18 @@ function Home() {
           ))
         )}
       </div>
+
+      {/* 🔽 Load More Button */}
+      {!load && visibleCount < filtered.length && (
+        <div className="flex justify-center mt-[30px]">
+          <button
+            onClick={handleLoadMore}
+            className="bg-blue-700 text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition"
+          >
+            Yana yuklash
+          </button>
+        </div>
+      )}
     </div>
   );
 }
