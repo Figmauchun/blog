@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import ReactMarkdown from "react-markdown";
-import SimpleMDE from "react-simplemde-editor";
-import "easymde/dist/easymde.min.css";
+import MDEditor from "@uiw/react-md-editor";
+import "@uiw/react-markdown-preview/markdown.css";
 
 function AddBlog() {
   const [title, setTitle] = useState("");
@@ -93,22 +92,21 @@ function AddBlog() {
         </div>
         <div className="input-box">
           <label>Maqola mazmuni (Markdown editor)</label>
-          <SimpleMDE
-            key="markdown-editor"
-            value={description}
-            onChange={(value) => setDescription(value)}
-            options={{
-              spellChecker: false,
-              placeholder: "Markdown bilan maqolani yozing...",
-            }}
-          />
+          <div data-color-mode="light">
+            <MDEditor
+              value={description}
+              onChange={(value) => setDescription(value || "")}
+              height={300}
+              preview="edit"
+            />
+          </div>
         </div>
 
         {/* Markdown Preview qismi */}
         <div className="mt-5 p-4 border rounded bg-gray-50">
           <h3 className="text-md font-semibold mb-2">Markdown Preview:</h3>
-          <div className="prose prose-sm max-w-none">
-            <ReactMarkdown>{description}</ReactMarkdown>
+          <div data-color-mode="light">
+            <MDEditor.Markdown source={description} />
           </div>
         </div>
 

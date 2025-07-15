@@ -30,7 +30,8 @@ h6 {
   margin-bottom: 20px;
 }
 .addpage input,
-textarea {
+textarea,
+.input-group input {
   padding: 10px 24px;
   border: 1px solid #e1e1e1;
   border-radius: 10px;

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import ReactMarkdown from "react-markdown";
-
+// import ReactMarkdown from "react-markdown";
+import MDEditor from "@uiw/react-md-editor";
+import "@uiw/react-markdown-preview/markdown.css";
 function BlogDetails() {
   const { id } = useParams();
   const [data, setData] = useState("");
@@ -44,7 +45,9 @@ function BlogDetails() {
             </div>
             <h4 className="text-[25px] my-[10px] lg:my-[30px]">{data.title}</h4>
             <div className="content-box text-[14px] lg:text-[16px]">
-              <ReactMarkdown>{data.description}</ReactMarkdown>
+              <div data-color-mode="light">
+                <MDEditor.Markdown source={data.description} />
+              </div>
             </div>
           </div>
         )}
