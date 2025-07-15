@@ -50,18 +50,12 @@ function Header() {
         >
           <ul className="flex flex-col md:flex-row items-center gap-[20px] mt-4 md:mt-0">
             <li>
-              <NavLink
-                to="/"
-                className="text-gray-700 dark:text-white hover:text-blue-600"
-              >
+              <NavLink to="/" className="text-gray-700 dark:text-white ">
                 Bosh Sahifa
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/add"
-                className="text-gray-700 dark:text-white hover:text-blue-600"
-              >
+              <NavLink to="/add" className="text-gray-700 dark:text-white ">
                 Maqola qo'shish
               </NavLink>
             </li>
