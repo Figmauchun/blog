@@ -102,7 +102,7 @@ function Home() {
               />
               <div className="p-[20px]">
                 <p className="text-gray-500 mb-2">
-                  O`qishlar soni 👁 {data.views ?? 0}
+                  O`qishlar soni 👁 {e.views ?? 0}
                 </p>
                 <h5 className="text-[20px] font-bold tracking-tight text-gray-900">
                   {e.title}
