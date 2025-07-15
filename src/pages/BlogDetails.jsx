@@ -48,7 +48,7 @@ function BlogDetails() {
       title: "Tahrirlash uchun tasdiq",
       input: "password",
       inputLabel: "Parolni kiriting",
-      inputPlaceholder: "Parol: hero1997@#$",
+      inputPlaceholder: "Parol: hero1997....",
       showCancelButton: true,
       confirmButtonText: "Tasdiqlash",
       cancelButtonText: "Bekor qilish",
