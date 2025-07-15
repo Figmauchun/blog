@@ -48,17 +48,23 @@ function BlogDetails() {
       title: "Tahrirlash uchun tasdiq",
       input: "password",
       inputLabel: "Parolni kiriting",
-      inputPlaceholder: "Parol: hero1997....",
+      inputPlaceholder: "Parol: hero1997...",
       showCancelButton: true,
       confirmButtonText: "Tasdiqlash",
       cancelButtonText: "Bekor qilish",
     });
 
-    if (!password) return;
+    // Parol kiritilmasa, scroll holati tiklanadi
+    if (!password) {
+      document.body.style.overflow = "auto";
+      return;
+    }
 
     if (password === "hero1997@#$") {
+      document.body.style.overflow = "auto"; // scrollni tiklash
       navigate(`/edit/${id}`);
     } else {
+      document.body.style.overflow = "auto"; // noto'g'ri parolda ham tiklash
       Swal.fire("Xato!", "Parol noto‘g‘ri!", "error");
     }
   };
