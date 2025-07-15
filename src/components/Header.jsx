@@ -1,11 +1,81 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
+  };
+
+  const questions = [
+    {
+      question: "const — bu nima?",
+      answer: "o'zgarmas",
+    },
+    {
+      question: "useState — nima vazifani bajaradi?",
+      answer: "state",
+    },
+    {
+      question: "img — bu nima?",
+      answer: "rasm",
+    },
+    {
+      question: "color — nima beradi?",
+      answer: "rang",
+    },
+    {
+      question: "[] — bu nima?",
+      answer: "massiv",
+    },
+    {
+      question: "Komponent — qanday harf bilan boshlanadi?",
+      answer: "katta",
+    },
+    {
+      question: "<!DOCTYPE> — bu nima?",
+      answer: "boshlanish",
+    },
+    {
+      question: "react-router-dom — nima uchun ishlatiladi?",
+      answer: "routing",
+    },
+    {
+      question: "margin — cssda nima beradi?",
+      answer: "oraliq",
+    },
+    {
+      question: "function — bu nima?",
+      answer: "funksiya",
+    },
+  ];
+
+  const handleQuizBeforeAdd = async () => {
+    const randomQuestion =
+      questions[Math.floor(Math.random() * questions.length)];
+    const { value: userAnswer } = await Swal.fire({
+      title: "Savol:",
+      input: "text",
+      inputLabel: randomQuestion.question,
+      inputPlaceholder: "Javobni kiriting...",
+      showCancelButton: true,
+      confirmButtonText: "Yuborish",
+      cancelButtonText: "Bekor qilish",
+    });
+
+    if (!userAnswer) return;
+
+    if (
+      userAnswer.trim().toLowerCase() === randomQuestion.answer.toLowerCase()
+    ) {
+      Swal.fire("To‘g‘ri!", "Endi maqola qo‘shishingiz mumkin!", "success");
+      navigate("/add");
+    } else {
+      Swal.fire("Xato!", "Javob noto‘g‘ri. Qaytadan urinib ko‘ring.", "error");
+    }
   };
 
   return (
@@ -51,9 +121,12 @@ function Header() {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/add" className="text-gray-700 dark:text-white ">
+              <button
+                onClick={handleQuizBeforeAdd}
+                className="text-gray-700 dark:text-white"
+              >
                 Maqola qo'shish
-              </NavLink>
+              </button>
             </li>
           </ul>
         </div>
