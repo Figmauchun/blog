@@ -3,16 +3,20 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import MDEditor from "@uiw/react-md-editor";
 import "@uiw/react-markdown-preview/markdown.css";
 import Swal from "sweetalert2";
+import { ClimbingBoxLoader } from "react-spinners";
 
 function BlogDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [data, setData] = useState("");
+  const [load, setLoad] = useState(true);
 
   useEffect(() => {
-    fetch(`https://843fa6cd9b383ee2.mokky.dev/blogs/${id}`)
-      .then((res) => res.json())
-      .then((json) => setData(json));
+    setTimeout(() => {
+      fetch(`https://843fa6cd9b383ee2.mokky.dev/blogs/${id}`)
+        .then((res) => res.json())
+        .then((json) => setData(json), setLoad(false));
+    }, 1500);
   }, [id]);
 
   const DeleteItem = async () => {
@@ -76,7 +80,7 @@ function BlogDetails() {
           <i className="bx bx-home-alt"></i>Ortga
         </span>
       </Link>
-
+      {load && <ClimbingBoxLoader />}
       {data && (
         <div className="details-box p-[15px] lg:p-[30px] ">
           <div className="category-box mb-[20px] flex justify-between items-center">
@@ -106,7 +110,7 @@ function BlogDetails() {
 
           <h4 className="text-[25px] my-[10px] lg:my-[30px]">{data.title}</h4>
 
-          <div className="content-box text-[14px] lg:text-[16px]">
+          <div className="content-box  text-[14px] lg:text-[16px]">
             <div data-color-mode="light">
               <MDEditor.Markdown source={data.description} />
             </div>
