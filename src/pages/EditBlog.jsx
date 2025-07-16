@@ -91,15 +91,22 @@ function EditBlog() {
             type="text"
           />
         </div>
-        <div className="input-box mb-4">
-          <label>Kategoriyasi</label>
-          <input
+        <div className="input-box">
+          <label className="block mb-1">Kategoriyasi</label>
+          <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500"
-            placeholder="Kategoriya"
-            type="text"
-          />
+            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          >
+            <option value="">-- Kategoriya tanlang --</option>
+            <option value="Kompyuter">Kompyuter</option>
+            <option value="Tarmoq">Tarmoq</option>
+            <option value="suniy intillekt">suniy intillekt</option>
+            <option value="SCSS">SCSS</option>
+            <option value="Kino">Kino</option>
+            <option value="Dasturlash">Dasturlash</option>
+            <option value="Frontend">Frontend</option>
+          </select>
         </div>
         <div className="input-box mb-4">
           <label>Rasm yuklash</label>
