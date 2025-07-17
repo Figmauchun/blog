@@ -98,3 +98,15 @@ a.active {
 ::-webkit-scrollbar-thumb:hover {
   background: transparent;
 }
+#google_translate_element {
+  float: right;
+  margin-right: 20px;
+  font-size: 14px;
+}
+
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+body {
+  top: 0px !important;
+}
